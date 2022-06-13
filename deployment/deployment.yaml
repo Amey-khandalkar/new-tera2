@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: pythondocker
+  name: pythondocker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: pythondocker
+  template:
+    metadata:
+      labels:
+        run: pythondocker
+    spec:
+      containers:
+        - image: gcr.io/cicd-336010/pythondocker:latest
+          name: pythondocker
+          ports:
+            - containerPort: 8080
